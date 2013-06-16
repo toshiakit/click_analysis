@@ -76,6 +76,7 @@ One thing to keep in mind is that the score difference among the top 3 variables
 
 - This analysis was performed on a data set that contain only 217 cases of clicks. That limits the accuracy of the model we can develop even though we had 782942 records. Therefore much larger dataset is needed for improving the analysis.
 - Some of the variables had a very large number of null values became unusable. However, User Interest variable had shown a sign that it could be a valuable predictor when I tried it without null values. Unfortunately this resulted in poorer predictive performance, because I had to discard large chunk of otherwise meaningful data and further reduced the cases of clicks. Therefore it is probably important to reduce the null values for User Interest variable.
+- How people access the websites also affects the probability of clicks. For example, mobile users are less likely to click on ads. Therefore adding the device variable should be part of the dataset. 
 
 ### Special Thanks
 
