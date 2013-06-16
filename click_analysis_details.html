@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>URL Click Analysis</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: rgb(88, 72, 246)
+   }
+
+   pre .number {
+     color: rgb(0, 0, 205);
+   }
+
+   pre .comment {
+     color: rgb(76, 136, 107);
+   }
+
+   pre .keyword {
+     color: rgb(0, 0, 255);
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: rgb(3, 106, 7);
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+</head>
+
+<body>
+<h1>URL Click Analysis</h1>
+
+<p>This is an R Markdown document. Markdown is a simple formatting syntax for authoring web pages where you can embed R codes. </p>
+
+<p>The <a href="https://s3.amazonaws.com/coursera_intro_data_science_project/coursera.sanitized.csv">source data</a>. Special thanks to Nandita for coming up with an idea for processing URL and Refer URL variables.</p>
+
+<h2>Data inspection and cleanup</h2>
+
+<h3>load raw data</h3>
+
+<pre><code class="r">raw &lt;- read.csv(&quot;coursera.sanitized.csv&quot;)
+sapply(raw[1, ], class)
+</code></pre>
+
+<pre><code>##  datehour      v_id      b_id      t_id    seller   country     state 
+##  &quot;factor&quot; &quot;integer&quot;  &quot;factor&quot; &quot;integer&quot; &quot;integer&quot;  &quot;factor&quot;  &quot;factor&quot; 
+##       url refer_url     click 
+##  &quot;factor&quot;  &quot;factor&quot; &quot;integer&quot;
+</code></pre>
+
+<h3>click:</h3>
+
+<p>An integer representing whether or not a click occurred - this is the outcome we want to predict</p>
+
+<pre><code class="r">table(raw$click)
+</code></pre>
+
+<pre><code>## 
+##      0      1 
+## 782725    217
+</code></pre>
+
+<pre><code class="r"># just those actually got any clicks
+clicked &lt;- raw[raw$click == 1, ]
+</code></pre>
+
+<h3>datehour:</h3>
+
+<p>A string describing the day and hour when the ad was served</p>
+
+<pre><code class="r">head(raw$datehour)
+</code></pre>
+
+<pre><code>## [1] 2013-05-29 09:00:00 2013-05-29 08:00:00 2013-05-29 08:00:00
+## [4] 2013-05-29 09:00:00 2013-05-29 08:00:00 2013-05-29 08:00:00
+## 100 Levels: 2013-05-28 00:00:00 2013-05-28 01:00:00 ... 2013-06-01 03:00:00
+</code></pre>
+
+<pre><code class="r">sum(is.na(raw$datehour))
+</code></pre>
+
+<pre><code>## [1] 0
+</code></pre>
+
+<pre><code class="r"># convert string to datetime object
+pdata &lt;- raw
+datehour &lt;- strptime(raw$datehour, &quot;%Y-%m-%d %H:%M:%S&quot;)
+pdata$wday &lt;- datehour$wday
+pdata$hour &lt;- datehour$hour
+pdata$datehour &lt;- datehour
+</code></pre>
+
+<h3>v_id:</h3>
+
+<p>An integer representing a channel in which a viewer has been served through. </p>
+
+<pre><code class="r">table(pdata$v_id)
+</code></pre>
+
+<pre><code>## 
+##      0      1      3 
+##  87067 601746  94129
+</code></pre>
+
+<pre><code class="r"># just those actually got any clicks
+table(clicked$v_id)
+</code></pre>
+
+<pre><code>## 
+##   0   1   3 
+##  25 165  27
+</code></pre>
+
+<pre><code class="r"># check missing values
+sum(is.na(pdata$v_id))
+</code></pre>
+
+<pre><code>## [1] 0
+</code></pre>
+
+<h3>b_id:</h3>
+
+<p>An integer representing a class of user based on their interests</p>
+
+<pre><code class="r">length(unique(pdata$b_id))
+</code></pre>
+
+<pre><code>## [1] 131
+</code></pre>
+
+<pre><code class="r"># just those actually got any clicks
+length(unique(clicked$b_id))
+</code></pre>
+
+<pre><code>## [1] 48
+</code></pre>
+
+<pre><code class="r"># check missing values
+sum(is.na(pdata$b_id))
+</code></pre>
+
+<pre><code>## [1] 0
+</code></pre>
+
+<pre><code class="r"># inspect data
+head(pdata$b_id)
+</code></pre>
+
+<pre><code>## [1] \\N \\N \\N \\N \\N \\N
+## 131 Levels: \\N 100 101 103 104 105 106 107 109 11 110 113 115 116 ... 96
+</code></pre>
+
+<pre><code class="r"># check the number of NULL values
+sum(pdata$b_id == &quot;\\N&quot;)
+</code></pre>
+
+<pre><code>## [1] 546712
+</code></pre>
+
+<pre><code class="r"># rename &#39;\\N&#39; to 0 and convert the factor into integer
+levels(pdata$b_id)[levels(pdata$b_id) == &quot;\\N&quot;] &lt;- &quot;0&quot;
+pdata$b_id &lt;- as.numeric(as.character(pdata$b_id))
+</code></pre>
+
+<h3>t_id:</h3>
+
+<p>An integer identifying a specific ad</p>
+
+<pre><code class="r">length(unique(pdata$t_id))
+</code></pre>
+
+<pre><code>## [1] 18
+</code></pre>
+
+<pre><code class="r"># just those actually got any clicks
+length(unique(clicked$t_id))
+</code></pre>
+
+<pre><code>## [1] 17
+</code></pre>
+
+<pre><code class="r"># check missing values
+sum(is.na(pdata$t_id))
+</code></pre>
+
+<pre><code>## [1] 0
+</code></pre>
+
+<h3>seller:</h3>
+
+<p>An integer representing the seller providing the wholesaler with the impression</p>
+
+<pre><code class="r">length(unique(pdata$seller))
+</code></pre>
+
+<pre><code>## [1] 437
+</code></pre>
+
+<pre><code class="r"># just those actually got any clicks
+length(unique(clicked$seller))
+</code></pre>
+
+<pre><code>## [1] 41
+</code></pre>
+
+<pre><code class="r"># check missing values
+sum(is.na(pdata$seller))
+</code></pre>
+
+<pre><code>## [1] 94129
+</code></pre>
+
+<pre><code class="r"># check the value range
+min(pdata$seller[!is.na(pdata$seller)])
+</code></pre>
+
+<pre><code>## [1] 0
+</code></pre>
+
+<pre><code class="r">max(pdata$seller[!is.na(pdata$seller)])
+</code></pre>
+
+<pre><code>## [1] 2796
+</code></pre>
+
+<pre><code class="r">pdata$seller[is.na(pdata$seller)] &lt;- 3000
+sum(is.na(pdata$seller))
+</code></pre>
+
+<pre><code>## [1] 0
+</code></pre>
+
+<h3>country:</h3>
+
+<p>A string representing the clicker&#39;s country of origin</p>
+
+<pre><code class="r">table(pdata$country)
+</code></pre>
+
+<pre><code>## 
+##            BR     CA     EG     ES     US 
+##   5158      1 777549      1      3    230
+</code></pre>
+
+<pre><code class="r"># just those actually got any clicks
+table(clicked$country)
+</code></pre>
+
+<pre><code>## 
+##      BR  CA  EG  ES  US 
+##   1   0 216   0   0   0
+</code></pre>
+
+<pre><code class="r"># check NULL values
+levels(pdata$country)
+</code></pre>
+
+<pre><code>## [1] &quot;&quot;   &quot;BR&quot; &quot;CA&quot; &quot;EG&quot; &quot;ES&quot; &quot;US&quot;
+</code></pre>
+
+<pre><code class="r">levels(pdata$country)[levels(pdata$country) == &quot;&quot;] &lt;- &quot;00&quot;
+levels(pdata$country)
+</code></pre>
+
+<pre><code>## [1] &quot;00&quot; &quot;BR&quot; &quot;CA&quot; &quot;EG&quot; &quot;ES&quot; &quot;US&quot;
+</code></pre>
+
+<h3>state:</h3>
+
+<p>A string representing the clicker&#39;s state of origin</p>
+
+<pre><code class="r">length(unique(pdata$state))
+</code></pre>
+
+<pre><code>## [1] 33
+</code></pre>
+
+<pre><code class="r"># just those actually got any clicks
+length(unique(clicked$state))
+</code></pre>
+
+<pre><code>## [1] 5
+</code></pre>
+
+<pre><code class="r"># check NULL values
+levels(pdata$state)
+</code></pre>
+
+<pre><code>##  [1] &quot;&quot;   &quot;00&quot; &quot;AB&quot; &quot;AK&quot; &quot;AZ&quot; &quot;BC&quot; &quot;CA&quot; &quot;CO&quot; &quot;FL&quot; &quot;GA&quot; &quot;IL&quot; &quot;IN&quot; &quot;LA&quot; &quot;MB&quot;
+## [15] &quot;MI&quot; &quot;MO&quot; &quot;MS&quot; &quot;NB&quot; &quot;NJ&quot; &quot;NS&quot; &quot;NT&quot; &quot;NU&quot; &quot;NY&quot; &quot;OH&quot; &quot;ON&quot; &quot;OR&quot; &quot;PE&quot; &quot;QC&quot;
+## [29] &quot;SK&quot; &quot;TX&quot; &quot;VA&quot; &quot;WA&quot; &quot;YT&quot;
+</code></pre>
+
+<pre><code class="r">levels(pdata$state)[levels(pdata$state) == &quot;&quot;] &lt;- &quot;00&quot;
+levels(pdata$state)
+</code></pre>
+
+<pre><code>##  [1] &quot;00&quot; &quot;AB&quot; &quot;AK&quot; &quot;AZ&quot; &quot;BC&quot; &quot;CA&quot; &quot;CO&quot; &quot;FL&quot; &quot;GA&quot; &quot;IL&quot; &quot;IN&quot; &quot;LA&quot; &quot;MB&quot; &quot;MI&quot;
+## [15] &quot;MO&quot; &quot;MS&quot; &quot;NB&quot; &quot;NJ&quot; &quot;NS&quot; &quot;NT&quot; &quot;NU&quot; &quot;NY&quot; &quot;OH&quot; &quot;ON&quot; &quot;OR&quot; &quot;PE&quot; &quot;QC&quot; &quot;SK&quot;
+## [29] &quot;TX&quot; &quot;VA&quot; &quot;WA&quot; &quot;YT&quot;
+</code></pre>
+
+<h3>url:</h3>
+
+<p>An encrypted string representing the URL the ad was displayed on</p>
+
+<pre><code class="r">length(unique(pdata$url))
+</code></pre>
+
+<pre><code>## [1] 12312
+</code></pre>
+
+<pre><code class="r"># just those actually got any clicks
+length(unique(clicked$url))
+</code></pre>
+
+<pre><code>## [1] 152
+</code></pre>
+
+<pre><code class="r"># check NULL values
+levels(pdata$url)[levels(pdata$url) == &quot;&quot;]
+</code></pre>
+
+<pre><code>## character(0)
+</code></pre>
+
+<p>Check the frequency of urls = views. Special thanks to Nandita for coming up with this metric. </p>
+
+<pre><code class="r">quantile(table(pdata$url))
+</code></pre>
+
+<pre><code>##    0%   25%   50%   75%  100% 
+##     1     1     3    11 35898
+</code></pre>
+
+<pre><code class="r"># barplot(sort(table(pdata$url),decreasing=TRUE), col=&#39;blue&#39;)
+# barplot(sort(table(clicked$url),decreasing=TRUE), col=&#39;blue&#39;)
+views &lt;- as.data.frame(table(pdata$url))
+names(views) &lt;- c(&quot;url&quot;, &quot;views&quot;)
+</code></pre>
+
+<p>Check the number of traffic sources - this represents the popularity of a given URL similar to PageRank algorithm. This is also based on Nandita&#39;s idea.</p>
+
+<pre><code class="r">sourceCount &lt;- function(page_url) {
+    ref &lt;- pdata$refer_url[pdata$url == page_url]
+    return(length(unique(ref)))
+}
+
+exetime &lt;- system.time(views$srcs &lt;- sapply(views[, 1], sourceCount))
+exetime[3]/60
+</code></pre>
+
+<pre><code>## elapsed 
+##   276.3
+</code></pre>
+
+<p>Add the views and source counts to the data</p>
+
+<pre><code class="r">pdata &lt;- merge(pdata, views, all = TRUE)
+</code></pre>
+
+<h3>refer_url:</h3>
+
+<p>An encrypted string representing the referrer URL</p>
+
+<pre><code class="r"># length(unique(pdata$refer_url)) just those actually got any clicks
+length(unique(clicked$refer_url))
+</code></pre>
+
+<pre><code>## [1] 118
+</code></pre>
+
+<pre><code class="r"># check NULL values
+levels(pdata$refer_url)[levels(pdata$refer_url) == &quot;&quot;]
+</code></pre>
+
+<pre><code>## character(0)
+</code></pre>
+
+<p>Check the frequency of refer_urls</p>
+
+<pre><code class="r">quantile(table(pdata$refer_url))
+</code></pre>
+
+<pre><code>##    0%   25%   50%   75%  100% 
+##     1     1     4    17 61337
+</code></pre>
+
+<pre><code class="r"># barplot(sort(table(pdata$refer_url),decreasing=TRUE), col=&#39;blue&#39;)
+# barplot(sort(table(clicked$refer_url),decreasing=TRUE), col=&#39;blue&#39;)
+</code></pre>
+
+<p>Add the frequency to the data - this represents how frequently a given referrer sends traffic - the larger frequency, the more active. </p>
+
+<pre><code class="r">referrals &lt;- as.data.frame(table(pdata$refer_url))
+names(referrals) &lt;- c(&quot;refer_url&quot;, &quot;referrals&quot;)
+pdata &lt;- merge(pdata, referrals, all = TRUE)
+</code></pre>
+
+<h3>Check the cleanup result</h3>
+
+<pre><code class="r">pdata &lt;- pdata[, c(&quot;datehour&quot;, &quot;wday&quot;, &quot;hour&quot;, &quot;v_id&quot;, &quot;b_id&quot;, &quot;t_id&quot;, &quot;seller&quot;, 
+    &quot;country&quot;, &quot;state&quot;, &quot;views&quot;, &quot;srcs&quot;, &quot;referrals&quot;, &quot;url&quot;, &quot;refer_url&quot;, &quot;click&quot;)]
+summary(pdata)
+</code></pre>
+
+<pre><code>##     datehour                        wday           hour     
+##  Min.   :2013-05-28 00:00:00   Min.   :2.00   Min.   : 0.0  
+##  1st Qu.:2013-05-28 19:00:00   1st Qu.:2.00   1st Qu.: 4.0  
+##  Median :2013-05-29 15:00:00   Median :3.00   Median :13.0  
+##  Mean   :2013-05-29 16:14:48   Mean   :3.19   Mean   :11.6  
+##  3rd Qu.:2013-05-30 13:00:00   3rd Qu.:4.00   3rd Qu.:17.0  
+##  Max.   :2013-06-01 03:00:00   Max.   :6.00   Max.   :23.0  
+##                                                             
+##       v_id           b_id           t_id          seller     country    
+##  Min.   :0.00   Min.   :   0   Min.   :9595   Min.   :   0   00:  5158  
+##  1st Qu.:1.00   1st Qu.:   0   1st Qu.:9600   1st Qu.: 459   BR:     1  
+##  Median :1.00   Median :   0   Median :9600   Median :1263   CA:777549  
+##  Mean   :1.13   Mean   : 134   Mean   :9602   Mean   :1176   EG:     1  
+##  3rd Qu.:1.00   3rd Qu.:  20   3rd Qu.:9606   3rd Qu.:1362   ES:     3  
+##  Max.   :3.00   Max.   :1539   Max.   :9612   Max.   :3000   US:   230  
+##                                                                         
+##      state            views            srcs         referrals    
+##  AB     :469398   Min.   :    1   Min.   :  1.0   Min.   :    1  
+##  MB     :274160   1st Qu.:  331   1st Qu.:  2.0   1st Qu.:  937  
+##  SK     : 29628   Median : 2416   Median :  5.0   Median : 7688  
+##  00     :  5163   Mean   : 6995   Mean   : 27.4   Mean   :19395  
+##  BC     :  2114   3rd Qu.: 8783   3rd Qu.:  9.0   3rd Qu.:42085  
+##  ON     :  1951   Max.   :35898   Max.   :539.0   Max.   :61337  
+##  (Other):   528                                                  
+##                                url        
+##  9de10ca8a3ca97b297d52f85d9405802: 35898  
+##  d41d8cd98f00b204e9800998ecf8427e: 28094  
+##  7fda1f7b7b41b508f042a2f1707139a5: 23717  
+##  2f187a80b5c7a8191b833d9f7a9cab3a: 21161  
+##  827ff00577f632e875ed4d5ad5110a05: 16547  
+##  3f4c618b986082f65d169b75eacbdf1d: 13729  
+##  (Other)                         :643796  
+##                             refer_url          click      
+##  61704255014d0941063906fc597813a2: 61337   Min.   :0e+00  
+##  50fbb858c32b045b323f64625c7499a3: 53225   1st Qu.:0e+00  
+##  c948dd7a61887edf9074a9f8c6461e34: 49634   Median :0e+00  
+##  1599908839386189af5ca7eec8b1de31: 42085   Mean   :3e-04  
+##  2d5027eae798c17c9f0b91d43d3432ba: 39452   3rd Qu.:0e+00  
+##  ecab7930ae6daaae85e0e49cbaaca87d: 29402   Max.   :1e+00  
+##  (Other)                         :507807
+</code></pre>
+
+<pre><code class="r">head(pdata)
+</code></pre>
+
+<pre><code>##              datehour wday hour v_id b_id t_id seller country state views
+## 1 2013-05-29 17:00:00    3   17    3    0 9606   3000      00    00     1
+## 2 2013-05-29 01:00:00    3    1    1  130 9611    589      CA    SK     2
+## 3 2013-05-30 02:00:00    4    2    1 1392 9601    310      CA    AB     2
+## 4 2013-05-29 00:00:00    3    0    0  853 9598      1      CA    AB 28094
+## 5 2013-05-29 05:00:00    3    5    0    0 9597      1      CA    AB 28094
+## 6 2013-05-28 21:00:00    2   21    0  853 9598      1      CA    AB 28094
+##   srcs referrals                              url
+## 1    1         1 000231e00491e024ac295c78f63585eb
+## 2    1         2 0021ac67ce4542475a085c5d71f89a61
+## 3    1         2 0021ac67ce4542475a085c5d71f89a61
+## 4  539         4 d41d8cd98f00b204e9800998ecf8427e
+## 5  539         4 d41d8cd98f00b204e9800998ecf8427e
+## 6  539         4 d41d8cd98f00b204e9800998ecf8427e
+##                          refer_url click
+## 1 000231e00491e024ac295c78f63585eb     0
+## 2 0021ac67ce4542475a085c5d71f89a61     0
+## 3 0021ac67ce4542475a085c5d71f89a61     0
+## 4 0022fc9341d50e0828b6cf556ecb47e0     0
+## 5 0022fc9341d50e0828b6cf556ecb47e0     0
+## 6 0022fc9341d50e0828b6cf556ecb47e0     0
+</code></pre>
+
+<pre><code class="r">save(pdata, file = &quot;processed.rda&quot;)
+# load(file=&#39;processed.rda&#39;)
+</code></pre>
+
+<h2>Deal with the class imbalance</h2>
+
+<h3>Reduce the majority class by downsumpling</h3>
+
+<p>Here we are making an assumption that we can ignore most of the cases where a click didn&#39;t occur without impeding our ability to detect the cases where it did occur.</p>
+
+<pre><code class="r"># first check the ratio between the two classes
+table(pdata$click)
+</code></pre>
+
+<pre><code>## 
+##      0      1 
+## 782725    217
+</code></pre>
+
+<pre><code class="r">
+# drop url and refer_url variables
+pdata &lt;- pdata[, !(names(pdata) %in% c(&quot;datehour&quot;, &quot;url&quot;, &quot;refer_url&quot;))]
+# convert click to a factor
+pdata$click &lt;- as.factor(pdata$click)
+
+# down sample the majority class to reduce the ratio of two classes to 10:1
+maj &lt;- pdata[pdata$click == 0, ]
+subSampling &lt;- sample(1:dim(maj)[1], size = 217 * 10, replace = FALSE)
+subSampled &lt;- rbind(pdata[pdata$click == 1, ], maj[subSampling, ])
+table(subSampled$click)
+</code></pre>
+
+<pre><code>## 
+##    0    1 
+## 2170  217
+</code></pre>
+
+<pre><code class="r">summary(subSampled)
+</code></pre>
+
+<pre><code>##       wday          hour           v_id           b_id           t_id     
+##  Min.   :2.0   Min.   : 0.0   Min.   :0.00   Min.   :   0   Min.   :9595  
+##  1st Qu.:2.0   1st Qu.: 4.0   1st Qu.:1.00   1st Qu.:   0   1st Qu.:9600  
+##  Median :3.0   Median :14.0   Median :1.00   Median :   0   Median :9600  
+##  Mean   :3.2   Mean   :11.7   Mean   :1.14   Mean   : 134   Mean   :9602  
+##  3rd Qu.:4.0   3rd Qu.:18.0   3rd Qu.:1.00   3rd Qu.:  22   3rd Qu.:9606  
+##  Max.   :6.0   Max.   :23.0   Max.   :3.00   Max.   :1539   Max.   :9612  
+##                                                                           
+##      seller     country       state          views            srcs      
+##  Min.   :   0   00:  12   AB     :1462   Min.   :    1   Min.   :  1.0  
+##  1st Qu.: 459   BR:   0   MB     : 814   1st Qu.:  278   1st Qu.:  2.0  
+##  Median :1263   CA:2372   SK     :  87   Median : 2297   Median :  5.0  
+##  Mean   :1184   EG:   0   00     :  12   Mean   : 6953   Mean   : 26.9  
+##  3rd Qu.:1362   ES:   0   ON     :   5   3rd Qu.: 8783   3rd Qu.:  9.0  
+##  Max.   :3000   US:   3   BC     :   4   Max.   :35898   Max.   :539.0  
+##                           (Other):   3                                  
+##    referrals     click   
+##  Min.   :    1   0:2170  
+##  1st Qu.:  801   1: 217  
+##  Median : 7327           
+##  Mean   :18973           
+##  3rd Qu.:42085           
+##  Max.   :61337           
+## 
+</code></pre>
+
+<h3>Setup Cross Validation</h3>
+
+<p>In order to test the predictive model, we will split the downsampled data into two subsets. We will also take a sampling from the original data without downsampling the majority class.</p>
+
+<pre><code class="r"># split data into two subsets - 2/3 training set, 1/3 test set
+set.seed(333)
+trainSamples &lt;- sample(1:dim(subSampled)[1], size = (dim(subSampled)[1]/3 * 
+    2), replace = FALSE)
+train &lt;- subSampled[trainSamples, ]
+test &lt;- subSampled[-trainSamples, ]
+# we will also have a validation set from the original data
+valSamples &lt;- sample(1:dim(pdata)[1], size = dim(pdata)[1]/50, replace = FALSE)
+validation &lt;- pdata[valSamples, ]
+# check the number of minority class - should be around 145:72
+sum(train$click == 1)
+</code></pre>
+
+<pre><code>## [1] 140
+</code></pre>
+
+<pre><code class="r">sum(test$click == 1)
+</code></pre>
+
+<pre><code>## [1] 77
+</code></pre>
+
+<pre><code class="r">sum(validation$click == 1)
+</code></pre>
+
+<pre><code>## [1] 4
+</code></pre>
+
+<h2>Random Forest</h2>
+
+<p>We try to build a predictive model using a random forest, with parameters set to take 10 samples from each class per iteration to make sure we get a balanced result. </p>
+
+<pre><code class="r">suppressPackageStartupMessages(library(randomForest))
+table(train$click)
+</code></pre>
+
+<pre><code>## 
+##    0    1 
+## 1451  140
+</code></pre>
+
+<pre><code class="r">set.seed(1234)
+rf.model1 &lt;- randomForest(click ~ ., data = train, importance = TRUE, prox = TRUE, 
+    strata = train$click, sampsize = c(10, 10))
+rf.model1
+</code></pre>
+
+<pre><code>## 
+## Call:
+##  randomForest(formula = click ~ ., data = train, importance = TRUE,      prox = TRUE, strata = train$click, sampsize = c(10, 10)) 
+##                Type of random forest: classification
+##                      Number of trees: 500
+## No. of variables tried at each split: 3
+## 
+##         OOB estimate of  error rate: 41.92%
+## Confusion matrix:
+##     0   1 class.error
+## 0 833 618      0.4259
+## 1  49  91      0.3500
+</code></pre>
+
+<p>The class error rate for click = 1 is 35.0% - which is not so great, but at least we are getting more than half of them right. </p>
+
+<p>Now let&#39;s see how much accuracy we get on the test set. </p>
+
+<pre><code class="r"># make prediction from the test set
+test.pred1 &lt;- predict(rf.model1, test[, -12])
+# compare it to the actual outcome
+confusionMatrix &lt;- table(observed = test$click, predicted = test.pred1)
+confusionMatrix
+</code></pre>
+
+<pre><code>##         predicted
+## observed   0   1
+##        0 394 325
+##        1  23  54
+</code></pre>
+
+<pre><code class="r"># class error rate of click=1
+confusionMatrix[2, 1]/sum(confusionMatrix[2, ])
+</code></pre>
+
+<pre><code>## [1] 0.2987
+</code></pre>
+
+<p>The class error rate is 29.9% - a bit better.</p>
+
+<p>Now let&#39;s make prediction with validation set</p>
+
+<pre><code class="r"># make prediction from the validation set
+validation.pred1 &lt;- predict(rf.model1, validation[, -12])
+# compare it to the actual outcome
+confusionMatrix &lt;- table(observed = validation$click, predicted = validation.pred1)
+confusionMatrix
+</code></pre>
+
+<pre><code>##         predicted
+## observed    0    1
+##        0 8856 6798
+##        1    1    3
+</code></pre>
+
+<pre><code class="r"># class error rate of click=1
+confusionMatrix[2, 1]/sum(confusionMatrix[2, ])
+</code></pre>
+
+<pre><code>## [1] 0.25
+</code></pre>
+
+<p>The class error rate is 25.0% - we called 3 out of 4 correctly.</p>
+
+<p>Now that the model seems to be working OK, we can now turn to the variable importance metric Random Forest produces.</p>
+
+<pre><code class="r">result &lt;- importance(rf.model1, )[, &quot;MeanDecreaseAccuracy&quot;]
+importance(rf.model1)[order(result, decreasing = TRUE), ]
+</code></pre>
+
+<pre><code>##                  0        1 MeanDecreaseAccuracy MeanDecreaseGini
+## seller     1.55867  2.69475              2.08787           1.3146
+## b_id       1.86772  0.30772              2.00006           0.6068
+## referrals  0.81327  4.45428              1.77695           1.3559
+## views      0.42939  6.03709              1.34419           1.6460
+## v_id       0.82073  1.37522              1.05345           0.3338
+## srcs      -0.08476  5.87896              0.63277           1.3031
+## country    0.00000  0.00000              0.00000           0.0000
+## hour       0.36502 -1.58071             -0.03936           1.3653
+## state     -0.24397 -0.84135             -0.36731           0.2404
+## t_id      -0.40296  0.02626             -0.42430           0.9689
+## wday      -0.62656 -1.78701             -1.09131           0.7621
+</code></pre>
+
+<p>The result rank the variable's importance by how much each contribute to reduce prediction error. However, the differences are pretty small, so I am not confident that this is a robust result.</p>
+
+<h2>Improving the model</h2>
+
+<p>Wenjia points out that two variables that show high importance, seller and b_id, happen to contain a lot of NULL values. These NULL values may be artificially raising the apparent importance of those variables.</p>
+
+<h3>Seller variable</h3>
+
+<p>Let&#39;s examine &ldquo;seller&rdquo; variable.</p>
+
+<pre><code class="r"># 94129 null values in &#39;seller&#39; variable were re-coded with 3000
+table(pdata$seller[pdata$seller == 3000], pdata$v_id[pdata$seller == 3000])
+</code></pre>
+
+<pre><code>##       
+##            3
+##   3000 94129
+</code></pre>
+
+<pre><code class="r">length(pdata$v_id[pdata$v_id == 3])
+</code></pre>
+
+<pre><code>## [1] 94129
+</code></pre>
+
+<p>It looks none of the v_id==3 conains valid seller id. 
+So what happens if we remove v_id==3?</p>
+
+<pre><code class="r"># New random forest without v_id==3
+rf.model2 &lt;- randomForest(click ~ ., data = train[train$v_id != 3, ], importance = TRUE, 
+    prox = TRUE, strata = train$click[train$v_id != 3], sampsize = c(10, 10))
+rf.model2
+</code></pre>
+
+<pre><code>## 
+## Call:
+##  randomForest(formula = click ~ ., data = train[train$v_id !=      3, ], importance = TRUE, prox = TRUE, strata = train$click[train$v_id !=      3], sampsize = c(10, 10)) 
+##                Type of random forest: classification
+##                      Number of trees: 500
+## No. of variables tried at each split: 3
+## 
+##         OOB estimate of  error rate: 39.77%
+## Confusion matrix:
+##     0   1 class.error
+## 0 763 500      0.3959
+## 1  52  73      0.4160
+</code></pre>
+
+<pre><code class="r">result &lt;- importance(rf.model2, )[, &quot;MeanDecreaseAccuracy&quot;]
+importance(rf.model2)[order(result, decreasing = TRUE), ]
+</code></pre>
+
+<pre><code>##                   0       1 MeanDecreaseAccuracy MeanDecreaseGini
+## views      4.330538  4.8310               5.3026         1.646611
+## srcs       4.578119  3.5439               5.2679         1.411746
+## b_id       3.266409  0.1011               2.9831         0.549895
+## referrals  1.683398  4.4927               2.6569         1.457910
+## seller     0.663660  2.0719               1.0503         1.312233
+## hour       1.064918 -1.0578               0.7595         1.417638
+## v_id       0.437230  0.9651               0.5857         0.178795
+## t_id       0.447652 -1.5972               0.1733         0.883117
+## wday       0.546101 -1.2312               0.1632         0.744873
+## state      0.009176 -0.9674              -0.1418         0.264481
+## country   -1.417050 -1.4170              -1.6375         0.006166
+</code></pre>
+
+<p>The importance of &ldquo;seller&rdquo; variable drops significantly once the null values are removed. For this reason, we can probably ignore this variable altogether. </p>
+
+<pre><code class="r"># New random forest without seller variable
+noseller &lt;- train
+noseller$seller &lt;- NULL
+rf.model3 &lt;- randomForest(click ~ ., data = noseller, importance = TRUE, prox = TRUE, 
+    strata = noseller$click, sampsize = c(10, 10))
+rf.model3
+</code></pre>
+
+<pre><code>## 
+## Call:
+##  randomForest(formula = click ~ ., data = noseller, importance = TRUE,      prox = TRUE, strata = noseller$click, sampsize = c(10, 10)) 
+##                Type of random forest: classification
+##                      Number of trees: 500
+## No. of variables tried at each split: 3
+## 
+##         OOB estimate of  error rate: 39.66%
+## Confusion matrix:
+##     0   1 class.error
+## 0 884 567      0.3908
+## 1  64  76      0.4571
+</code></pre>
+
+<pre><code class="r">result &lt;- importance(rf.model3, )[, &quot;MeanDecreaseAccuracy&quot;]
+importance(rf.model3)[order(result, decreasing = TRUE), ]
+</code></pre>
+
+<pre><code>##                 0        1 MeanDecreaseAccuracy MeanDecreaseGini
+## srcs       4.0676  1.99375               4.5541         1.443125
+## views      3.7457  1.72963               4.2118         1.854874
+## referrals  2.9128  3.98252               3.9521         1.832449
+## b_id       1.8838  0.08293               1.9398         0.672024
+## v_id       1.7177 -0.14739               1.7842         0.344518
+## country    1.3441  0.00000               1.3441         0.003091
+## t_id       1.3985 -1.18428               1.2658         1.112469
+## hour       1.0358 -2.07756               0.4789         1.463926
+## state      0.6713 -2.69325               0.3920         0.262547
+## wday      -1.4438 -1.62507              -1.8332         0.870442
+</code></pre>
+
+<h3>b_id variable</h3>
+
+<p>Let&#39;s now examine &ldquo;b_id&rdquo; variable. 546712 values &ldquo;//N&rdquo; variable were re-coded with 0.</p>
+
+<pre><code class="r"># how many clicks does that class contain?
+table(pdata$click[pdata$b_id == 0])
+</code></pre>
+
+<pre><code>## 
+##      0      1 
+## 546580    132
+</code></pre>
+
+<pre><code class="r"># how many clicks do all other classes contain?
+table(pdata$click[pdata$b_id != 0])
+</code></pre>
+
+<pre><code>## 
+##      0      1 
+## 236145     85
+</code></pre>
+
+<p>It turned out Null value is a majority class for this variable. So what happens if we remove it?</p>
+
+<pre><code class="r"># New random forest without null values in b_id
+nonulls &lt;- noseller[noseller$b_id != 0, ]
+rf.model4 &lt;- randomForest(click ~ ., data = nonulls, importance = TRUE, prox = TRUE, 
+    strata = nonulls$click, sampsize = c(10, 10))
+rf.model4
+</code></pre>
+
+<pre><code>## 
+## Call:
+##  randomForest(formula = click ~ ., data = nonulls, importance = TRUE,      prox = TRUE, strata = nonulls$click, sampsize = c(10, 10)) 
+##                Type of random forest: classification
+##                      Number of trees: 500
+## No. of variables tried at each split: 3
+## 
+##         OOB estimate of  error rate: 42.83%
+## Confusion matrix:
+##     0   1 class.error
+## 0 267 194      0.4208
+## 1  24  24      0.5000
+</code></pre>
+
+<pre><code class="r">result &lt;- importance(rf.model4, )[, &quot;MeanDecreaseAccuracy&quot;]
+importance(rf.model4)[order(result, decreasing = TRUE), ]
+</code></pre>
+
+<pre><code>##                  0        1 MeanDecreaseAccuracy MeanDecreaseGini
+## b_id       1.04063  1.65759               1.4848           1.6480
+## t_id       1.21699  0.20917               1.3126           1.0666
+## country    1.00100  0.00000               1.0010           0.0032
+## wday       0.43049 -0.00269               0.4125           0.8254
+## srcs      -0.01367  2.02503               0.4084           1.2027
+## v_id       0.41046 -0.59283               0.2935           0.4907
+## state     -0.22732 -2.66343              -0.7488           0.3561
+## hour      -0.79484 -0.30514              -0.8560           1.3164
+## referrals -2.71990  4.77042              -1.4052           1.5247
+## views     -1.62686  0.29365              -1.6943           1.5056
+</code></pre>
+
+<p>b_id still remains high, and our class error rate worsened noticeably. So it is probably not good idea to remove the records with null values. We should keep those records, but we shouldn&#39;t use this variable because of the class imbalance. </p>
+
+<pre><code class="r"># New random forest without b_id
+noBID &lt;- noseller
+noBID$b_id &lt;- NULL
+rf.model5 &lt;- randomForest(click ~ ., data = noBID, importance = TRUE, prox = TRUE, 
+    strata = noBID$click, sampsize = c(10, 10))
+rf.model5
+</code></pre>
+
+<pre><code>## 
+## Call:
+##  randomForest(formula = click ~ ., data = noBID, importance = TRUE,      prox = TRUE, strata = noBID$click, sampsize = c(10, 10)) 
+##                Type of random forest: classification
+##                      Number of trees: 500
+## No. of variables tried at each split: 3
+## 
+##         OOB estimate of  error rate: 45.76%
+## Confusion matrix:
+##     0   1 class.error
+## 0 772 679       0.468
+## 1  49  91       0.350
+</code></pre>
+
+<pre><code class="r">result &lt;- importance(rf.model5, )[, &quot;MeanDecreaseAccuracy&quot;]
+importance(rf.model5)[order(result, decreasing = TRUE), ]
+</code></pre>
+
+<pre><code>##                 0      1 MeanDecreaseAccuracy MeanDecreaseGini
+## srcs       3.1369  4.142               3.8784         1.536105
+## referrals  1.0602  5.298               2.0870         1.871308
+## views      1.2387  4.362               1.9245         2.019903
+## t_id       1.1309 -1.811               0.9382         1.149385
+## state      0.9391 -1.888               0.8159         0.278711
+## v_id       0.4579  1.626               0.7614         0.439901
+## wday      -0.3111 -2.171              -0.8717         0.930050
+## country   -1.0010  0.000              -1.0010         0.003867
+## hour      -0.7312 -2.829              -1.4010         1.650569
+</code></pre>
+
+<p>The important variables are now: srcs, referrals, views, t_id, and state. This seems to make more intuitive sense.</p>
+
+<p>Now let&#39;s see how much accuracy we get on the test set. </p>
+
+<pre><code class="r"># drop seller, b_id from the test set
+test &lt;- test[, !(names(test) %in% c(&quot;seller&quot;, &quot;b_id&quot;))]
+# make prediction from the test set
+test.pred5 &lt;- predict(rf.model5, test[, -10])
+# compare it to the actual outcome
+confusionMatrix &lt;- table(observed = test$click, predicted = test.pred5)
+confusionMatrix
+</code></pre>
+
+<pre><code>##         predicted
+## observed   0   1
+##        0 382 337
+##        1  26  51
+</code></pre>
+
+<pre><code class="r"># class error rate of click=1
+confusionMatrix[2, 1]/sum(confusionMatrix[2, ])
+</code></pre>
+
+<pre><code>## [1] 0.3377
+</code></pre>
+
+<p>Now let&#39;s make prediction with validation set</p>
+
+<pre><code class="r"># drop seller, b_id from the validation set
+validation &lt;- validation[, !(names(validation) %in% c(&quot;seller&quot;, &quot;b_id&quot;))]
+# make prediction from the validation set
+validation.pred5 &lt;- predict(rf.model5, validation[, -10])
+# compare it to the actual outcome
+confusionMatrix &lt;- table(observed = validation$click, predicted = validation.pred5)
+confusionMatrix
+</code></pre>
+
+<pre><code>##         predicted
+## observed    0    1
+##        0 8582 7072
+##        1    1    3
+</code></pre>
+
+<pre><code class="r"># class error rate of click=1
+confusionMatrix[2, 1]/sum(confusionMatrix[2, ])
+</code></pre>
+
+<pre><code>## [1] 0.25
+</code></pre>
+
+<p>So we didn&#39;t lose our predictive power, either. </p>
+
+</body>
+
+</html>
+
