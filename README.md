@@ -1,4 +1,4 @@
-click_analysis
+Click Analysis
 ==============
 
 This is my Real World Assignment for "Introduction to Data Science" course on Coursera. 
