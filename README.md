@@ -6,7 +6,7 @@ This is my Real World Assignment for "Introduction to Data Science" course on Co
 Files included
 ---------------
 
-- click_analysis_summary.rtf (the high level summary)
+- click_analysis_summary.md (the high level summary)
 - click_analysis_details.html (the details of the analysis)
 - click_analysis_details.pdf (the pdf version of the above)
 - click_analysis.Rmd (the R script in Rmd format)
